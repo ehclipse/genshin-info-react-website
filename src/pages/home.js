@@ -4,6 +4,7 @@ import bg from '../images/bg.jfif';
 import { Autocomplete, TextField } from '@mui/material';
 import {v4 as uuidv4} from 'uuid';
 
+// {npm run deploy} to deploy
 
 
 
@@ -293,7 +294,7 @@ const Home = () => {
                 <h2 style={{marginRight: '50px', borderColor: '#09044d'}}>Login</h2> */}
             </div>
             <div className='content' style={contentStyle}>
-                <h3>Welcome to the Abyss Information Hub!</h3>
+                <h3>Welcome to the Abyss Hub!</h3>
                 <p>All the info in Genshin can be found here with a single search</p>
             </div>
             <div className='searchContainer' style={searchContainerStyle}>
@@ -342,8 +343,8 @@ const Home = () => {
 
             {/* CHARACTERS SECTION  */}
             {characterSearch && data && <div className='charResultContainer' style={resultContainerStyle}>
-                <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-                    <div style={{padding: '100px', maxWidth: '60ch', borderRadius: '50px', color: 'white', marginTop: '100px', marginBottom: '100px',textAlign: 'center', backgroundColor: '#171717', }}>
+                <div style={{width: '100vw', display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap'}}>
+                    <div style={{padding: '5rem', maxWidth: '60ch', borderRadius: '50px', color: 'white', marginTop: '100px', marginBottom: '100px',textAlign: 'center', backgroundColor: '#171717', }}>
                         <h1>{data.name}</h1>
                         <h2>{rarity}</h2>
                         <p>
@@ -357,11 +358,13 @@ const Home = () => {
                             {data.description}
                         </p>    
                     </div>
-                    {thumbnail && <img src={thumbnail} alt="paimon" width="25%" style={{margin: '50px'}}/>}
+                    <div style={{margin: '100px'}}>
+                        {thumbnail && <img src={thumbnail} alt="paimon" width="400rem" />}
+                    </div>
                 </div>
                 
-                <div style ={{display: 'flex', justifyContent: 'center'}}> {/* Row 2 */}
-                    <div style={{padding: '100px', maxWidth: '60ch',borderRadius: '50px', color: 'white', margin: '100px', textAlign: 'center', backgroundColor: '#171717', }}>
+                <div style ={{width: '100vw',display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}> {/* Row 2 */}
+                    <div style={{padding: '5rem', maxWidth: '60ch',borderRadius: '50px', color: 'white', margin: '100px', textAlign: 'center', backgroundColor: '#171717', }}>
                         <h2>Skill Talents</h2>
                         {
                             data.skillTalents.map((element) => {
@@ -375,7 +378,7 @@ const Home = () => {
                             })
                         }
                     </div>
-                    <div style={{padding: '100px', maxWidth: '60ch', borderRadius: '50px',color: 'white', margin: '100px', textAlign: 'center', backgroundColor: '#171717', minWidth: '15vw', minHeight: '25vh'}}>
+                    <div style={{padding: '5rem', maxWidth: '60ch', borderRadius: '50px',color: 'white', margin: '100px', textAlign: 'center', backgroundColor: '#171717', minWidth: '15vw', minHeight: '25vh'}}>
                         <h2>Passive Talents</h2>
                         {
                             data.passiveTalents.map((element) => {
@@ -391,7 +394,7 @@ const Home = () => {
                     </div>
                 </div>
         
-                <div style={{padding: '100px', maxWidth: '60ch',borderRadius: '50px', color: 'white', margin: '100px', textAlign: 'center', backgroundColor: '#171717', minHeight: '25vh'}}>
+                <div style={{padding: '5rem', maxWidth: '60ch',borderRadius: '50px', color: 'white', margin: '100px', textAlign: 'center', backgroundColor: '#171717', minHeight: '25vh'}}>
                     <h2>Constellations</h2>
                     {
                         data.constellations.map((element) => {
@@ -410,7 +413,7 @@ const Home = () => {
 
             {/* ARTIFACTS SECTION  */}
             {artifactSearch && data && <div className='artResultContainer' style={resultContainerStyle}>
-                <div style={{ maxWidth: '60ch', borderRadius: '50px', color: 'white', padding: '100px', margin: '100px', textAlign: 'center', backgroundColor: '#171717', }}> 
+                <div style={{ maxWidth: '60ch', borderRadius: '50px', color: 'white', padding: '5rem', margin: '100px', textAlign: 'center', backgroundColor: '#171717', }}> 
                         <h1>{data.name} <br/></h1>
                         <p>
                             Max Rarity: {rarity} <br/>
@@ -426,8 +429,8 @@ const Home = () => {
                 <div style={{margin: '100px',textAlign: 'center',}}>
                     {thumbnail && <img src={thumbnail} alt="paimon" />}
                 </div>
-                <div style={{display: 'flex', justifyContent: 'center'}}> {/* Column */}
-                    <div style={{borderRadius: '50px', color: 'white', padding: '100px', margin: '100px', textAlign: 'center', backgroundColor: '#171717', }}>
+                <div style={{flexWrap: 'wrap', display: 'flex', justifyContent: 'center'}}> {/* Row */}
+                    <div style={{borderRadius: '50px', color: 'white', padding: '5rem', margin: '100px', textAlign: 'center', backgroundColor: '#171717', }}>
                         <h1>
                             {data.name} 
                         </h1>
@@ -440,7 +443,7 @@ const Home = () => {
                             Substat: {data.subStat}
                         </p>
                     </div>
-                    <div style={{padding: '100px', maxWidth: '60ch', borderRadius: '50px', color: 'white', margin: '100px', textAlign: 'center', backgroundColor: '#171717', minWidth: '15vw', }}>
+                    <div style={{padding: '5rem', maxWidth: '60ch', borderRadius: '50px', color: 'white', margin: '100px', textAlign: 'center', backgroundColor: '#171717', minWidth: '15vw', }}>
                         <h2>Passive:</h2>
                         <h3>{data.passiveName}</h3>
                         <p>
@@ -459,12 +462,13 @@ const homePageStyle = {
     backgroundColor: '#09044d', // dark
     height: '100vh',
     width: '100vw',
+    overflowX: 'hidden'
 }
 
 const contentStyle = {
     display: 'flex',
     justifyContent: 'center',
-    paddingLeft: '100px',
+    paddingLeft: '10%',
     flexDirection: 'column',
     color: '#2C489C',  // KEEP THIS COLOR 2C489C
     background: `linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,100, .75)), url(${bg}`,
@@ -491,6 +495,7 @@ const searchContainerStyle = {
     flexDirection: 'column',
     height: '100vh',
     width: '100vw',
+    backgroundColor: 'white'
 
 
 }
@@ -498,13 +503,15 @@ const searchContainerStyle = {
 const searchOptionsStyle = {
     display: 'flex',
     listStyleType: 'none',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
 }
 
 const searchItemStyle = {
     border: 'none',
     backgroundColor: 'white',
     cursor: 'pointer',
-    marginLeft: '25px',
+    padding: '0.5em',
     fontWeight: 'bold',
     fontSize: '16pt'
     
